@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRANDA - Giriş</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #000;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        /* SAYFA 1 - GİRİŞ EKRANI */
+        .login-screen {
+            width: 100%;
+            height: 100vh;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s ease;
+        }
+
+        .login-screen.hidden {
+            display: none;
+        }
+
+        .login-content {
+            text-align: center;
+        }
+
+        .login-text {
+            font-size: 28px;
+            letter-spacing: 3px;
+            color: #999;
+            margin-bottom: 40px;
+            animation: pulse 2s infinite;
+        }
+
+        .login-btn {
+            padding: 15px 50px;
+            font-size: 16px;
+            background: transparent;
+            border: 2px solid #666;
+            color: #999;
+            cursor: pointer;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .login-btn:hover {
+            border-color: #fff;
+            color: #fff;
+        }
+
+        /* SAYFA 2 - VİDEO EKRANI */
+        .video-screen {
+            width: 100%;
+            height: 100vh;
+            background: #000;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .video-screen.active {
+            display: flex;
+        }
+
+        .video-container {
+            width: 90%;
+            max-width: 1000px;
+            height: 600px;
+            background: #111;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 50px rgba(0, 255, 255, 0.2);
+        }
+
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .video-info {
+            margin-top: 30px;
+            max-width: 1000px;
+            text-align: center;
+        }
+
+        .video-title {
+            font-size: 24px;
+            color: #00d9ff;
+            margin-bottom: 15px;
+        }
+
+        .video-description {
+            font-size: 14px;
+            color: #999;
+            line-height: 1.6;
+        }
+
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background: transparent;
+            border: 1px solid #666;
+            color: #999;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            border-color: #fff;
+            color: #fff;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <!-- SAYFA 1: GİRİŞ -->
+    <div class="login-screen" id="loginScreen">
+        <div class="login-content">
+            <div class="login-text">TIKLAYARAK GİRİŞ YAP</div>
+            <button class="login-btn" onclick="goToVideo()">GİRİŞ YAP</button>
+        </div>
+    </div>
+
+    <!-- SAYFA 2: VİDEO -->
+    <div class="video-screen" id="videoScreen">
+        <button class="back-btn" onclick="goBack()">← GERİ DÖN</button>
+        
+        <div class="video-container">
+            <video controls autoplay>
+                <iframe width="100%" height="100%" 
+    src="https://www.youtube.com/embed/P6rLf3IT38Y" 
+    frameborder="0" allowfullscreen>
+</iframe>
+                Tarayıcınız HTML5 videoyu desteklemiyor.
+            </video>
+        </div>
+
+        <div class="video-info">
+            <div class="video-title">KALBİN RİTMİ</div>
+            <div class="video-description">
+                Hayatın karmaşasında kayboluşken bulduğum en güzel liman senin kalbindi.
+                Birlikte yürüdüğümüz her yol, paylaştığımız her sessizlik, aslında ruhumuzun birbine fısıldadığı en güzel şiirdir.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function goToVideo() {
+            document.getElementById('loginScreen').classList.add('hidden');
+            document.getElementById('videoScreen').classList.add('active');
+        }
+
+        function goBack() {
+            document.getElementById('loginScreen').classList.remove('hidden');
+            document.getElementById('videoScreen').classList.remove('active');
+        }
+    </script>
+</body>
+</html>
